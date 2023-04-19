@@ -16,6 +16,23 @@
       <mat-error *ngIf="formulario.get('correo')?.hasError('required')">El correo electrónico es requerido</mat-error>
       <mat-error *ngIf="formulario.get('correo')?.hasError('email')">Ingrese un correo electrónico válido</mat-error>
     </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Contraseña" formControlName="password">
+      <mat-error *ngIf="formulario.get('password')?.hasError('required')">
+        La contraseña es requerida
+      </mat-error>
+      <mat-error *ngIf="formulario.get('password')?.hasError('minlength')">
+        La contraseña debe tener al menos 8 caracteres
+      </mat-error>
+      <mat-error *ngIf="formulario.get('password')?.hasError('maxlength')">
+        La contraseña no debe tener más de 24 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="password" placeholder="Confirmar contraseña" formControlName="confirmPassword">
+      <mat-error *ngIf="formulario.get('confirmPassword')?.hasError('passwordMismatch')">Las contraseñas no coinciden</mat-error>
+    </mat-form-field>
     <mat-form-field class="">
       <mat-label>DNI</mat-label>
       <input matInput formControlName="dni" required>
