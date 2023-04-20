@@ -1,0 +1,9 @@
+form >*{
+  display: block;
+  width: 300px;
+}
+mat-card{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem auto;
+}

@@ -1,0 +1,33 @@
+<mat-card class="container">
+  <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()" class="">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" required>
+      <mat-error *ngIf="formulario.get('nombre')?.hasError('required')">El nombre es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field class="">
+      <mat-label>Primer apellido</mat-label>
+      <input matInput formControlName="apellido" required>
+      <mat-error *ngIf="formulario.get('apellido')?.hasError('required')">El primer apellido es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field class="">
+      <mat-label>Segundo apellido</mat-label>
+      <input matInput formControlName="apellido2" required>
+      <mat-error *ngIf="formulario.get('apellido2')?.hasError('required')">El segundo apellido es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field class="">
+      <mat-label>DNI</mat-label>
+      <input matInput formControlName="dni" required>
+      <mat-error *ngIf="formulario.get('dni')?.hasError('required')">El DNI es requerido</mat-error>
+      <mat-error *ngIf="formulario.get('dni')?.hasError('pattern')">El DNI no es válido</mat-error>
+    </mat-form-field>
+    <mat-form-field class="">
+      <mat-label>Correo electrónico</mat-label>
+      <input matInput formControlName="correo" required placeholder="example@exmaple.com">
+      <mat-error *ngIf="formulario.get('correo')?.hasError('required')">El correo electrónico es requerido</mat-error>
+      <mat-error *ngIf="formulario.get('correo')?.hasError('email')">Ingrese un correo electrónico válido</mat-error>
+    </mat-form-field>
+    <mat-checkbox formControlName="extranjero">Extranjero</mat-checkbox>
+    <button mat-raised-button color="primary" type="submit">Enviar</button>
+  </form>
+</mat-card>

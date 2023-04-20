@@ -1,0 +1,12 @@
+form{
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+}
+label, input{
+  display: block;
+}
+form>div{
+  margin: 10px;
+}
