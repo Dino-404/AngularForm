@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
+
 
 @Component({
   selector: 'app-datos-laborales',
@@ -10,7 +13,7 @@ export class DatosLaboralesComponent {
   isSubmitted :boolean = false;
   datosLaboralesForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private dialog: MatDialog) {
     this.datosLaboralesForm = this.fb.group({
       fechaInicio: ['', [Validators.required]],
       fechaFin: [''],
@@ -23,7 +26,9 @@ export class DatosLaboralesComponent {
   onSubmit() {
     this.isSubmitted = true;
     if (this.datosLaboralesForm.valid) {
-      alert(JSON.stringify(this.datosLaboralesForm.value));
+      const dialogRef = this.dialog.open(ModalComponent, {
+        data: this.datosLaboralesForm
+      });
     }
   }
 }

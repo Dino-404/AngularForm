@@ -20,6 +20,11 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RegistrosComponent } from './registros/registros.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalComponent } from './modal/modal.component';
+
 
 
 @NgModule({
@@ -30,8 +35,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     DatosLaboralesComponent,
     DatosContactoComponent,
     WelcomePageComponent,
-    RegistrosComponent],
+    RegistrosComponent,
+    SidebarComponent,
+    ModalComponent
+    ],
   imports: [
+    CommonModule,
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -46,6 +55,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCardModule,
     NgbModule,
     MdbCollapseModule,
+    MatDialogModule,
   ],
   providers:[],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@
   <div>
     <label>Fecha de inicio:</label>
     <input type="date" formControlName="fechaInicio" />
-    <div *ngIf="datosLaboralesForm.get('fechaInicio')?.hasError('required') && (datosLaboralesForm.get('fechaInicio')?.touched || isSubmitted)">La fecha de inicio es requerida</div>
+    <div class="error" *ngIf="datosLaboralesForm.get('fechaInicio')?.hasError('required') && (datosLaboralesForm.get('fechaInicio')?.touched || isSubmitted)">La fecha de inicio es requerida</div>
   </div>
   <div>
     <label>Fecha fin:</label>
@@ -11,23 +11,23 @@
     <div>
       <label>Empresa actual:</label>
       <input type="text" formControlName="empresaActual" />
-      <div *ngIf="datosLaboralesForm.get('empresaActual')?.hasError('required') && (datosLaboralesForm.get('empresaActual')?.touched || isSubmitted)">La empresa actual es requerida</div>
-      <div *ngIf="datosLaboralesForm.get('empresaActual')?.hasError('minlength')">La empresa actual debe tener al menos
+      <div class="error" *ngIf="datosLaboralesForm.get('empresaActual')?.hasError('required') && (datosLaboralesForm.get('empresaActual')?.touched || isSubmitted)">La empresa actual es requerida</div>
+      <div class="error" *ngIf="datosLaboralesForm.get('empresaActual')?.hasError('minlength')">La empresa actual debe tener al menos
         2 caracteres</div>
     </div>
   <div>
     <label>Número de pagas:</label>
     <input type="number" formControlName="numPagas" />
-    <div *ngIf="datosLaboralesForm.get('numPagas')?.hasError('required') && (datosLaboralesForm.get('numPagas')?.touched || isSubmitted)">El número de pagas es requerido</div>
-    <div *ngIf="datosLaboralesForm.get('numPagas')?.hasError('min')">El número de pagas debe ser al menos 1</div>
+    <div class="error" *ngIf="datosLaboralesForm.get('numPagas')?.hasError('required') && (datosLaboralesForm.get('numPagas')?.touched || isSubmitted)">El número de pagas es requerido</div>
+    <div class="error" *ngIf="datosLaboralesForm.get('numPagas')?.hasError('min')">El número de pagas debe ser al menos 1</div>
   </div>
   <div>
     <label>Años trabajados:</label>
     <input type="number" formControlName="anosTrabajados" />
-    <div *ngIf="datosLaboralesForm.get('anosTrabajados')?.hasError('required') && (datosLaboralesForm.get('anosTrabajados')?.touched || isSubmitted)">Los años trabajados son requeridos</div>
-    <div *ngIf="datosLaboralesForm.get('anosTrabajados')?.hasError('min')">Los años trabajados deben ser al menos 1
+    <div class="error" *ngIf="datosLaboralesForm.get('anosTrabajados')?.hasError('required') && (datosLaboralesForm.get('anosTrabajados')?.touched || isSubmitted)">Los años trabajados son requeridos</div>
+    <div class="error" *ngIf="datosLaboralesForm.get('anosTrabajados')?.hasError('min')">Los años trabajados deben ser al menos 1
     </div>
   </div>
 
-  <div><button type="submit">Enviar</button></div>
+  <button type="submit">Enviar</button>
 </form>
