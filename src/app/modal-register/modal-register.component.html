@@ -1,0 +1,54 @@
+<div class="register">
+  <h1>Registro</h1>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="dni">DNI:</label>
+    <input type="text" class="form-control" id="dni" formControlName="dni">
+    <div *ngIf="registerForm.controls['dni'].invalid && (registerForm.controls['dni'].dirty || registerForm.controls['dni'].touched)" class="alert alert-danger">
+      <div *ngIf="registerForm.controls['dni'].hasError('required')">
+        DNI is required.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" id="password" formControlName="password">
+    <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)" class="alert alert-danger">
+      <div *ngIf="registerForm.controls['password'].hasError('required')">
+        Password is required.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+    <div *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)" class="alert alert-danger">
+      <div *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
+        Confirm Password is required.
+      </div>
+      <div *ngIf="registerForm.controls['confirmPassword'].hasError('mustMatch')">
+        Passwords must match.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone:</label>
+    <input type="text" class="form-control" id="phone" formControlName="phone">
+    <div *ngIf="registerForm.controls['phone'].invalid && (registerForm.controls['phone'].dirty || registerForm.controls['phone'].touched)" class="alert alert-danger">
+      <div *ngIf="registerForm.controls['phone'].hasError('required')">
+        Phone is required.
+      </div>
+    </div>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="terms" formControlName="terms">
+    <label class="form-check-label" for="terms">I accept the terms and conditions</label>
+    <div *ngIf="registerForm.controls['terms'].invalid && (registerForm.controls['terms'].dirty || registerForm.controls['terms'].touched)" class="alert alert-danger">
+      <div *ngIf="registerForm.controls['terms'].hasError('required')">
+        You must accept the terms and conditions to register.
+      </div>
+    </div>
+  </div>
+  <button type="submit" mat-raised-button color="accent" [disabled]="registerForm.invalid">Register</button>
+</form>
+</div>

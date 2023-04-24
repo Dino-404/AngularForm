@@ -1,0 +1,42 @@
+.bg-image {
+  background-image: url('/assets/background-pixel.jpg');
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  padding-top: 64px;
+}
+
+mat-card {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+mat-card-actions{
+  margin-left: 10px;
+}
+form *{
+  display: flex;
+  flex-direction: column;
+}
+
+label{
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+button {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.form-group{
+  margin: 15px 0;
+}
+a{
+  text-decoration: none;
+}
