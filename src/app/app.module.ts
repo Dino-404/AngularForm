@@ -11,7 +11,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { FormularioComponent } from './formulario/formulario.component';
 import { DatosPersonalesComponent } from './datos-personales/datos-personales.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { DatosLaboralesComponent } from './datos-laborales/datos-laborales.component';
 import { DatosContactoComponent } from './datos-contacto/datos-contacto.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -24,14 +23,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
-
-
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [AppComponent,
     FormularioComponent,
     DatosPersonalesComponent,
-    NavbarComponent,
     DatosLaboralesComponent,
     DatosContactoComponent,
     WelcomePageComponent,
@@ -56,6 +56,10 @@ import { ModalComponent } from './modal/modal.component';
     NgbModule,
     MdbCollapseModule,
     MatDialogModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatIconModule,
   ],
   providers:[],
   bootstrap: [AppComponent]
