@@ -29,24 +29,27 @@ export class DatosLaboralesComponent {
   onSubmit() {
     this.isSubmitted = true;
     if (this.datosLaboralesForm.valid) {
-      this.user.fechaInicio = this.datosLaboralesForm.value.fechaInicio;
-      this.user.fechaFin = this.datosLaboralesForm.value.fechaFin;
-      this.user.empresaActual = this.datosLaboralesForm.value.empresaActual;
-      this.user.pagas = this.datosLaboralesForm.value.numPagas;
-      this.user.anyosTrabajado = this.datosLaboralesForm.value.anosTrabajados;
-      this.usuarioService.actualizarUsuario(this.user);
+      const user = this.user;
+      const formulario = this.datosLaboralesForm.value;
+      user.fechaInicio = formulario.fechaInicio;
+      user.fechaFin = formulario.fechaFin;
+      user.empresaActual = formulario.empresaActual;
+      user.pagas = formulario.numPagas;
+      user.anyosTrabajado = formulario.anosTrabajados;
+      this.usuarioService.actualizarUsuario(user);
     }
   }
 
   ngOnInit(){
     if(this.usuarioService.comprobarSession()){
       this.user = this.usuarioService.obtenerUsuario();
+      const user = this.user;
       this.datosLaboralesForm.setValue({ // Asigna los valores del usuario al datosLaboralesForm utilizando el método setValue
-        fechaInicio: this.user.fechaInicio || '',
-        fechaFin: this.user.fechaFin || '',
-        numPagas : this.user.pagas || '',
-        empresaActual: this.user.empresaActual || '',
-        anosTrabajados: this.user.anyosTrabajado || '',
+        fechaInicio: user.fechaInicio || '',
+        fechaFin: user.fechaFin || '',
+        numPagas : user.pagas || '',
+        empresaActual: user.empresaActual || '',
+        anosTrabajados: user.anyosTrabajado || '',
       });
     }
   }

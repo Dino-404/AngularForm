@@ -27,6 +27,11 @@
       <mat-error *ngIf="formulario.get('correo')?.hasError('required')">El correo electrónico es requerido</mat-error>
       <mat-error *ngIf="formulario.get('correo')?.hasError('email')">Ingrese un correo electrónico válido</mat-error>
     </mat-form-field>
+    <mat-form-field class="">
+      <mat-label>Telefono</mat-label>
+      <input matInput formControlName="phone" required placeholder="example@exmaple.com">
+      <mat-error *ngIf="formulario.get('phone')?.hasError('required')">El telefono es requerido</mat-error>
+    </mat-form-field>
     <mat-checkbox formControlName="extranjero">Extranjero</mat-checkbox>
     <button mat-raised-button color="primary" type="submit">Enviar</button>
   </form>

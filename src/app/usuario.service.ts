@@ -73,6 +73,7 @@ export class UsuarioService {
         return usuario;
       }
     }
+    alert("Usuario no registrado");
     throw new Error(`El usuario no esta registrado`);
   }
   actualizarUsuario(usuarioActualizado: Usuario): void {

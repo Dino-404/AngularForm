@@ -27,26 +27,29 @@ export class DatosContactoComponent {
   onSubmit() {
     this.isSubmitted = true;
     if (this.datosContactoForm.valid) {
-      this.user.pais = this.datosContactoForm.value.pais;
-      this.user.provincia = this.datosContactoForm.value.provincia;
-      this.user.ciudad = this.datosContactoForm.value.ciudad;
-      this.user.calle = this.datosContactoForm.value.calle;
-      this.user.piso = this.datosContactoForm.value.piso;
-      this.user.numero = this.datosContactoForm.value.numero;
-      this.usuarioService.actualizarUsuario(this.user);
+      const formulario = this.datosContactoForm.value;
+      const user = this.user;
+      user.pais = formulario.pais;
+      user.provincia = formulario.provincia;
+      user.ciudad = formulario.ciudad;
+      user.calle = formulario.calle;
+      user.piso = formulario.piso;
+      user.numero = formulario.numero;
+      this.usuarioService.actualizarUsuario(user);
     }
   }
 
   ngOnInit(){
     if(this.usuarioService.comprobarSession()){
       this.user = this.usuarioService.obtenerUsuario();
+      const user = this.user;
       this.datosContactoForm.setValue({ // Asigna los valores del usuario al datosContactoForm utilizando el método setValue
-        pais: this.user.pais || '',
-        provincia: this.user.provincia || '',
-        ciudad : this.user.ciudad || '',
-        calle: this.user.calle || '',
-        piso: this.user.piso || '',
-        numero: this.user.numero || ''
+        pais: user.pais || '',
+        provincia: user.provincia || '',
+        ciudad : user.ciudad || '',
+        calle: user.calle || '',
+        piso: user.piso || '',
+        numero: user.numero || ''
       });
     }
   }
