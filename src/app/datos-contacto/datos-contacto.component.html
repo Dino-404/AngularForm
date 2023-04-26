@@ -24,14 +24,14 @@
       <ngb-alert [dismissible]="false" *ngIf="datosContactoForm.get('calle')?.hasError('required') && (datosContactoForm.get('calle')?.touched || isSubmitted)">La calle es requerido</ngb-alert>
     </div>
     <div class="form-group">
-      <label for="piso">Piso</label>
-      <input type="text" class="form-control" formControlName="piso" id="piso">
-      <ngb-alert [dismissible]="false" *ngIf="datosContactoForm.get('piso')?.hasError('required') && (datosContactoForm.get('piso')?.dirty || isSubmitted)">El piso es requerido</ngb-alert>
-    </div>
-    <div class="form-group">
       <label for="numero">Número</label>
       <input type="number" class="form-control" formControlName="numero" id="numero">
       <ngb-alert [dismissible]="false" *ngIf="datosContactoForm.get('numero')?.hasError('required') && (datosContactoForm.get('numero')?.touched || isSubmitted)">El numero es requerido</ngb-alert>
+    </div>
+    <div class="form-group">
+      <label for="piso">Piso</label>
+      <input type="text" class="form-control" formControlName="piso" id="piso">
+      <ngb-alert [dismissible]="false" *ngIf="datosContactoForm.get('piso')?.hasError('required') && (datosContactoForm.get('piso')?.dirty || isSubmitted)">El piso es requerido</ngb-alert>
     </div>
     <br>
     <button type="submit" class="btn btn-primary">Enviar</button>

@@ -44,7 +44,8 @@ export class DatosLaboralesComponent {
     if(this.usuarioService.comprobarSession()){
       this.user = this.usuarioService.obtenerUsuario();
       const user = this.user;
-      this.datosLaboralesForm.setValue({ // Asigna los valores del usuario al datosLaboralesForm utilizando el método setValue
+      this.datosLaboralesForm.setValue({
+        // Asigna los valores del usuario al datosLaboralesForm utilizando el método setValue
         fechaInicio: user.fechaInicio || '',
         fechaFin: user.fechaFin || '',
         numPagas : user.pagas || '',

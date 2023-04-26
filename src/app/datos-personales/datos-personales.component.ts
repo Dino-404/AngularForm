@@ -27,7 +27,8 @@ export class DatosPersonalesComponent implements OnInit {
     if(this.usuarioService.comprobarSession()){
       this.user = this.usuarioService.obtenerUsuario();
       const user = this.user;
-      this.formulario.setValue({ // Asigna los valores del usuario al formulario utilizando el método setValue
+      this.formulario.setValue({
+        // Asigna los valores del usuario al formulario utilizando el método setValue
         nombre: user.nombre || '',
         apellido: user.apellido1 || '',
         apellido2: user.apellido2 || '',

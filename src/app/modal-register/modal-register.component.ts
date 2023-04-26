@@ -28,10 +28,16 @@ export class ModalRegisterComponent {
       terms: [false, Validators.requiredTrue]
     });
   }
+
   disableDniDuplicate() {
     this.dniDuplicate = false;
   }
 
+  /**
+   * Metodo para comprobar que las contraseñas son iguales
+   * @param controlName
+   * @returns
+   */
   mustMatch(controlName: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const password = control.parent?.get(controlName);
@@ -54,8 +60,8 @@ export class ModalRegisterComponent {
       this.dniDuplicate = true;
       return;
     }
+    //Se guarda el usuario en local y se cierra el dialog
     this.usuarioService.guardarUsuarioLocal(new Usuario(this.registerForm.value.dni, this.registerForm.value.password, this.registerForm.value.phone));
-
     this.dialogRef.close();
   }
 

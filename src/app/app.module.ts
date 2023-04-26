@@ -9,7 +9,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
-import { FormularioComponent } from './formulario/formulario.component';
 import { DatosPersonalesComponent } from './datos-personales/datos-personales.component';
 import { DatosLaboralesComponent } from './datos-laborales/datos-laborales.component';
 import { DatosContactoComponent } from './datos-contacto/datos-contacto.component';
@@ -17,7 +16,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RegistrosComponent } from './registros/registros.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
@@ -31,12 +29,10 @@ import { ModalRegisterComponent } from './modal-register/modal-register.componen
 
 @NgModule({
   declarations: [AppComponent,
-    FormularioComponent,
     DatosPersonalesComponent,
     DatosLaboralesComponent,
     DatosContactoComponent,
     WelcomePageComponent,
-    RegistrosComponent,
     SidebarComponent,
     ModalComponent,
     ModalRegisterComponent,

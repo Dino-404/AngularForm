@@ -17,6 +17,7 @@ export class SidebarComponent implements OnDestroy {
 
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private titleService: Title, private contentObserver: ContentObserver) {
+    //Observador para verificar cuando pasa de 600px de ancho
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);

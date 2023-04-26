@@ -43,7 +43,8 @@ export class DatosContactoComponent {
     if(this.usuarioService.comprobarSession()){
       this.user = this.usuarioService.obtenerUsuario();
       const user = this.user;
-      this.datosContactoForm.setValue({ // Asigna los valores del usuario al datosContactoForm utilizando el método setValue
+      this.datosContactoForm.setValue({
+        // Asigna los valores del usuario al datosContactoForm utilizando el método setValue
         pais: user.pais || '',
         provincia: user.provincia || '',
         ciudad : user.ciudad || '',

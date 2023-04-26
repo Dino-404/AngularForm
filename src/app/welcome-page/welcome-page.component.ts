@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalRegisterComponent } from '../modal-register/modal-register.component';
 import { UsuarioService } from '../usuario.service';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-welcome-page',
@@ -23,22 +24,30 @@ export class WelcomePageComponent {
     if (this.loginForm.invalid) {
       return;
     }
+    //Si el formulario es valido entonces comprueba que el usuario existe
     const dni = this.loginForm.value.dni;
     const password = this.loginForm.value.password;
     if (this.usuarioService.comprobarUsuario(dni, password)) {
-      alert("Usuario logeado");
+      //Si existe se guarda el DNI en local como 'token'
+      this.dialog.open(ModalComponent, {
+        data: {
+          title: 'Bienvenido',
+          message: 'Usuario logeado'
+        }
+      });
       this.usuarioService.guardarSesion(dni);
     } else {
-      alert("Error");
+      this.dialog.open(ModalComponent, {
+        data: {
+          title: 'Error',
+          message: 'Las credenciales no son válidas'
+        }
+      });
     }
   }
 
   register() {
     const dialogRef = this.dialog.open(ModalRegisterComponent, {
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 }
