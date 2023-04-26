@@ -8,7 +8,7 @@ export class Usuario implements datosContacto, DatosLaborales, DatosPersonales {
   ciudad!: string;
   calle!: string;
   piso!: string;
-  numero?: string;
+  numero!: string;
   fechaInicio!: Date;
   fechaFin!: Date;
   empresaActual!: string;
@@ -21,10 +21,11 @@ export class Usuario implements datosContacto, DatosLaborales, DatosPersonales {
   mail!: string;
   extranjero!: boolean;
   password: string;
+  telefono? :string;
 
-  constructor(dni: string, password: string, numero?:string) {
-    this.dni = dni
-    this.password = password
-    this.numero = numero
+  constructor(dni: string, password: string, telefono?:string) {
+    this.dni = dni;
+    this.password = password;
+    this.telefono = telefono;
   }
 }

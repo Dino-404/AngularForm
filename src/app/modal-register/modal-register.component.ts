@@ -19,8 +19,8 @@ export class ModalRegisterComponent {
     private usuarioService: UsuarioService
   ) {
     this.registerForm = this.formBuilder.group({
-      dni: ['',  [Validators.required, Validators.pattern(/^\d{8}[a-zA-Z]$/)]],
-       password: ['', [
+      dni: ['', [Validators.required, Validators.pattern(/^\d{8}[a-zA-Z]$/)]],
+      password: ['', [
         Validators.required,
         Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
       confirmPassword: ['', [Validators.required, this.mustMatch('password')]],
