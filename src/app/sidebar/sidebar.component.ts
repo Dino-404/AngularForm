@@ -1,5 +1,8 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { ContentObserver } from '@angular/cdk/observers';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -8,13 +11,16 @@ import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 })
 export class SidebarComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
+  title: string = 'Titulo';
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private titleService: Title, private contentObserver: ContentObserver) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+
   }
 
   ngOnDestroy(): void {

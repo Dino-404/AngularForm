@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalRegisterComponent } from '../modal-register/modal-register.component';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-welcome-page',
@@ -11,9 +12,9 @@ import { ModalRegisterComponent } from '../modal-register/modal-register.compone
 export class WelcomePageComponent {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,public dialog: MatDialog) {
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private usuarioService: UsuarioService) {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      dni: ['', [Validators.required, Validators.pattern('^(?:(?:([XYZ])\\d{7,8})|(\\d{8})([A-HJ-NP-TV-Z]))$')]],
       password: ['', Validators.required]
     });
   }
@@ -22,9 +23,17 @@ export class WelcomePageComponent {
     if (this.loginForm.invalid) {
       return;
     }
+    const dni = this.loginForm.value.dni;
+    const password = this.loginForm.value.password;
+    if (this.usuarioService.comprobarUsuario(dni, password)) {
+      alert("Usuario logeado");
+      this.usuarioService.guardarSesion(dni);
+    } else {
+      alert("Error");
+    }
   }
 
-  register(){
+  register() {
     const dialogRef = this.dialog.open(ModalRegisterComponent, {
     });
 

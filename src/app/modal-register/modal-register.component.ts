@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors, FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Usuario } from 'src/models/usuario';
+import { UsuarioService } from '../usuario.service';
 
 
 @Component({
@@ -8,23 +10,29 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './modal-register.component.html',
   styleUrls: ['./modal-register.component.css']
 })
-export class ModalRegisterComponent{
+export class ModalRegisterComponent {
   registerForm!: FormGroup;
-
+  dniDuplicate: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<ModalRegisterComponent>
+    public dialogRef: MatDialogRef<ModalRegisterComponent>,
+    private usuarioService: UsuarioService
   ) {
     this.registerForm = this.formBuilder.group({
-      dni: ['', Validators.required],
-      password: ['', Validators.required],
+      dni: ['',  [Validators.required, Validators.pattern(/^\d{8}[a-zA-Z]$/)]],
+       password: ['', [
+        Validators.required,
+        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
       confirmPassword: ['', [Validators.required, this.mustMatch('password')]],
-      phone: ['', Validators.required],
+      phone: [''],
       terms: [false, Validators.requiredTrue]
     });
-   }
+  }
+  disableDniDuplicate() {
+    this.dniDuplicate = false;
+  }
 
-   mustMatch(controlName: string): ValidatorFn {
+  mustMatch(controlName: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const password = control.parent?.get(controlName);
       if (password && control.value !== password.value) {
@@ -35,15 +43,18 @@ export class ModalRegisterComponent{
     };
   }
 
-
-
   onSubmit() {
     if (this.registerForm.invalid) {
       return;
     }
+    const dni = this.registerForm.value.dni;
 
-    // TODO: Handle form submission
-    console.log(this.registerForm.value);
+    if (this.usuarioService.comprobarDniRegistrado(dni)) {
+      // El DNI ya está registrado
+      this.dniDuplicate = true;
+      return;
+    }
+    this.usuarioService.guardarUsuarioLocal(new Usuario(this.registerForm.value.dni, this.registerForm.value.password, this.registerForm.value.phone));
 
     this.dialogRef.close();
   }
